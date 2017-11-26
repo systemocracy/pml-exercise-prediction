@@ -129,7 +129,15 @@ $(document).ready(function () {
 <div id="summary" class="section level2">
 <h2>Summary</h2>
 <p>Using the dataset provide by HAR <a href="http://groupware.les.inf.puc-rio.br/har" class="uri">http://groupware.les.inf.puc-rio.br/har</a> our goal is to predict the manner in which the Unilateral Dumbbell Biceps Curl Excercise is performed. On the dataset 159 features are measured by sensors while performing the exercise in five different fashions: exactly according to the specification (Class A), throwing the elbows to the front (Class B), lifting the dumbbell only halfway (Class C), lowering the dumbbell only halfway (Class D) and throwing the hips to the front (Class E).</p>
-<p>We will select a model to predict the manner in which the exercise was performed. Our prediction model must be used to predict 20 different test cases. Steps that will be performed: - Clean the Data - Exploratory Analisys - Model Selection - Conclusion - Use the model to predict final test cases</p>
+<p>We will select a model to predict the manner in which the exercise was performed. Our prediction model must be used to predict 20 different test cases.</p>
+<p>Steps that will be performed:</p>
+<ul>
+<li>Clean the Data</li>
+<li>Exploratory Analisys</li>
+<li>Model Selection</li>
+<li>Conclusion</li>
+<li>Use the model to predict final test cases</li>
+</ul>
 <p>Libraries used: library (corrplot) library(caret) library(randomForest)</p>
 </div>
 <div id="clean-the-data" class="section level2">
@@ -208,7 +216,14 @@ pcaPreProcessSubSet &lt;- preProcess(trainingSubSet[, -excludeColumns], method =
 trainingSubSetPCASubSet &lt;- predict(pcaPreProcessSubSet, trainingSubSet[, -excludeColumns])
 validateSubSetPCASubSet &lt;- predict(pcaPreProcessSubSet, validateSubSet[, -excludeColumns])
 testingPCASubSet &lt;- predict(pcaPreProcessSubSet, testingSet[, -classeIndex])</code></pre>
-<p>Now we will create models using Random Forest training. Ideally we should use as many trees as possible, probably about 100 would be a good trade-off if we have enough hardware. Since my hardware is quite dated and limited, I have trained 4 Random Forest models: - Using trainngSubSet as is. - Using trainingSubSet with highly correlated variables removed. - Using trainingSubSet preprocessed with PCA - Using trainingSubSet with highly correlated variables removed and preprocessed with PCA</p>
+<p>Now we will create models using Random Forest training. Ideally we should use as many trees as possible, probably about 100 would be a good trade-off if we have enough hardware.</p>
+<p>Since my hardware is quite dated and limited, I have trained 4 Random Forest models:</p>
+<ul>
+<li>Using trainngSubSet as is.</li>
+<li>Using trainingSubSet with highly correlated variables removed.</li>
+<li>Using trainingSubSet preprocessed with PCA</li>
+<li>Using trainingSubSet with highly correlated variables removed and preprocessed with PCA</li>
+</ul>
 <p>As each training run maxed out my hardware resource I will not evaluate the code on my report, but will post the code and results. We are using ntrees 50 due to hardware limitations. During training we are also monitoring the time, to report if any model has any advantage in this regard.</p>
 <pre class="r"><code>ntree &lt;- 50
 

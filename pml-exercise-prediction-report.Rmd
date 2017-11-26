@@ -28,12 +28,14 @@ library(randomForest)
 Using the dataset provide by HAR [http://groupware.les.inf.puc-rio.br/har](http://groupware.les.inf.puc-rio.br/har) our goal is to predict the manner in which the Unilateral Dumbbell Biceps Curl Excercise is performed. On the dataset 159 features are measured by sensors while performing the exercise in five different fashions: exactly according to the specification (Class A), throwing the elbows to the front (Class B), lifting the dumbbell only halfway (Class C), lowering the dumbbell only halfway (Class D) and throwing the hips to the front (Class E).
 
 We will select a model to predict the manner in which the exercise was performed. Our prediction model must be used to predict 20 different test cases. 
+
 Steps that will be performed:
-- Clean the Data
-- Exploratory Analisys
-- Model Selection
-- Conclusion
-- Use the model to predict final test cases
+
+* Clean the Data
+* Exploratory Analisys
+* Model Selection
+* Conclusion
+* Use the model to predict final test cases
 
 Libraries used:
 library (corrplot)
@@ -164,11 +166,13 @@ testingPCASubSet <- predict(pcaPreProcessSubSet, testingSet[, -classeIndex])
 
 Now we will create models using Random Forest training.
 Ideally we should use as many trees as possible, probably about 100 would be a good trade-off if we have enough hardware.
+
 Since my hardware is quite dated and limited, I have trained 4 Random Forest models:
-- Using trainngSubSet as is.
-- Using trainingSubSet with highly correlated variables removed.
-- Using trainingSubSet preprocessed with PCA
-- Using trainingSubSet with highly correlated variables removed and preprocessed with PCA
+
+* Using trainngSubSet as is.
+* Using trainingSubSet with highly correlated variables removed.
+* Using trainingSubSet preprocessed with PCA
+* Using trainingSubSet with highly correlated variables removed and preprocessed with PCA
 
 As each training run maxed out my hardware resource I will not evaluate the code on my report, but will post the code and results.
 We are using ntrees 50 due to hardware limitations.
